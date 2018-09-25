@@ -1,6 +1,5 @@
 import { Component, Prop, Element, State } from '@stencil/core';
 import Storage from '../Storage/storages/localStorage';
-import { h32 as hash } from 'xxhashjs';
 import { getPath } from '../DOM/path';
 
 @Component({
@@ -28,9 +27,9 @@ export class LayoutSplitVertical {
 	}
 
 
-	private handleTouchStart = () => void 0;
-	private handleTouchMove = () => void 0;
-	private handleTouchEnd = () => void 0;
+	private handleTouchStart = (e: TouchEvent) => { e.preventDefault(); this.handleDown(e.touches[0].clientX); };
+	private handleTouchMove = (e: TouchEvent) => this.handleMove(e.touches[0].clientX);
+	private handleTouchEnd = () => this.handleUp();
 	private handleMouseDown = (e: MouseEvent) => { e.preventDefault(); this.handleDown(e.clientX); };
 	private handleMouseMove = (e: MouseEvent) => this.handleMove(e.clientX);
 	private handleMouseUp = () => this.handleUp();
@@ -45,7 +44,7 @@ export class LayoutSplitVertical {
 		if (this.active) {
 			const newWidth = this.resiziblePanel.style.width;
 			if (newWidth.length) {
-				const path = hash(getPath(this.resiziblePanel), 1).toString(16);
+				const path = getPath(this.resiziblePanel);
 				if (this.storage) {
 					this.storage.set(path, +newWidth.slice(0, newWidth.length - 2));
 				}
@@ -76,7 +75,7 @@ export class LayoutSplitVertical {
 		this.width = this.resiziblePanel.clientWidth;
 
 		if (this.storage) {
-			const loadedWidth = this.storage.get(hash(getPath(this.resiziblePanel), 1).toString(16));
+			const loadedWidth = this.storage.get(getPath(this.resiziblePanel));
 			this.resiziblePanel.style.width = loadedWidth + 'px';
 		}
 	}
