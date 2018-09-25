@@ -1,0 +1,35 @@
+:host {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+
+	.panel {
+		flex: 1 1 auto;
+		min-width: 100px;
+	}
+
+	.resizible {
+		flex: 0 0 auto;
+	}
+
+	.separator {
+		flex: 0 0 5px;
+		width: 5px;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		cursor: col-resize;
+
+		&::before {
+			content: '';
+			display: block;
+			width: 3px;
+			height: 3px;
+			border-radius: 50%;
+			background: #555;
+			box-shadow: 0 -4px 0 0 #555, 0 4px 0 0 #555;
+		}
+	}
+}

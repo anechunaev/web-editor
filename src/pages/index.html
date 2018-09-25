@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Editor</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+	<link href="/build/aann.css" rel="stylesheet" />
+	<script src="/build/aann.js"></script>
+</head>
+<body>
+	<section class="screen">
+		<layout-split-vertical>
+			<span slot="left">Hello</span>
+			<layout-split-vertical slot="right" resizible="right">
+				<span slot="left">New</span>
+				<span slot="right">World</span>
+			</layout-split-vertical>
+		</layout-split-vertical>
+	</section>
+</body>
+</html>

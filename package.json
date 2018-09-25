@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "stencil build --watch & node --experimental-modules server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "stencil": "0.0.5"
+    "@stencil/core": "^0.12.4",
+    "@stencil/less": "^0.1.0",
+    "typescript": "^3.0.3",
+    "xxhashjs": "^0.2.2"
   }
 }
