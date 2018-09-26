@@ -11,6 +11,15 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface LayoutSplitHorizontal {
+    'onSizeChange': (size: number, delta: number) => void;
+    'resizible': "top" | "bottom";
+  }
+  interface LayoutSplitHorizontalAttributes extends StencilHTMLAttributes {
+    'onSizeChange'?: (size: number, delta: number) => void;
+    'resizible'?: "top" | "bottom";
+  }
+
   interface LayoutSplitVertical {
     'onSizeChange': (size: number, delta: number) => void;
     'resizible': "left" | "right";
@@ -23,13 +32,21 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'LayoutSplitHorizontal': Components.LayoutSplitHorizontal;
     'LayoutSplitVertical': Components.LayoutSplitVertical;
   }
 
   interface StencilIntrinsicElements {
+    'layout-split-horizontal': Components.LayoutSplitHorizontalAttributes;
     'layout-split-vertical': Components.LayoutSplitVerticalAttributes;
   }
 
+
+  interface HTMLLayoutSplitHorizontalElement extends Components.LayoutSplitHorizontal, HTMLStencilElement {}
+  var HTMLLayoutSplitHorizontalElement: {
+    prototype: HTMLLayoutSplitHorizontalElement;
+    new (): HTMLLayoutSplitHorizontalElement;
+  };
 
   interface HTMLLayoutSplitVerticalElement extends Components.LayoutSplitVertical, HTMLStencilElement {}
   var HTMLLayoutSplitVerticalElement: {
@@ -38,10 +55,12 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'layout-split-horizontal': HTMLLayoutSplitHorizontalElement
     'layout-split-vertical': HTMLLayoutSplitVerticalElement
   }
 
   interface ElementTagNameMap {
+    'layout-split-horizontal': HTMLLayoutSplitHorizontalElement;
     'layout-split-vertical': HTMLLayoutSplitVerticalElement;
   }
 
