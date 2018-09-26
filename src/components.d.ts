@@ -11,6 +11,13 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface EditorPanel {
+    'title': string;
+  }
+  interface EditorPanelAttributes extends StencilHTMLAttributes {
+    'title'?: string;
+  }
+
   interface LayoutScrollable {
     'axis': "x" | "y" | "xy";
   }
@@ -49,6 +56,7 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'EditorPanel': Components.EditorPanel;
     'LayoutScrollable': Components.LayoutScrollable;
     'LayoutSplitHorizontal': Components.LayoutSplitHorizontal;
     'LayoutSplitVertical': Components.LayoutSplitVertical;
@@ -57,6 +65,7 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'editor-panel': Components.EditorPanelAttributes;
     'layout-scrollable': Components.LayoutScrollableAttributes;
     'layout-split-horizontal': Components.LayoutSplitHorizontalAttributes;
     'layout-split-vertical': Components.LayoutSplitVerticalAttributes;
@@ -64,6 +73,12 @@ declare global {
     'layout-test': Components.LayoutTestAttributes;
   }
 
+
+  interface HTMLEditorPanelElement extends Components.EditorPanel, HTMLStencilElement {}
+  var HTMLEditorPanelElement: {
+    prototype: HTMLEditorPanelElement;
+    new (): HTMLEditorPanelElement;
+  };
 
   interface HTMLLayoutScrollableElement extends Components.LayoutScrollable, HTMLStencilElement {}
   var HTMLLayoutScrollableElement: {
@@ -96,6 +111,7 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'editor-panel': HTMLEditorPanelElement
     'layout-scrollable': HTMLLayoutScrollableElement
     'layout-split-horizontal': HTMLLayoutSplitHorizontalElement
     'layout-split-vertical': HTMLLayoutSplitVerticalElement
@@ -104,6 +120,7 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'editor-panel': HTMLEditorPanelElement;
     'layout-scrollable': HTMLLayoutScrollableElement;
     'layout-split-horizontal': HTMLLayoutSplitHorizontalElement;
     'layout-split-vertical': HTMLLayoutSplitVerticalElement;

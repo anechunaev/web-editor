@@ -1,0 +1,38 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	background: #444;
+	flex: 0 0 auto;
+	margin-bottom: 10px;
+
+	.title {
+		font-weight: bold;
+		padding: 5px;
+		background: #393939;
+		color: #999;
+	}
+
+	.content {
+		padding: 5px;
+	}
+
+	.resizer {
+		background: #393939;
+		height: 9px;
+		width: 100%;
+		flex: 0 0 9px;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		cursor: ns-resize;
+
+		&::before {
+			content: '';
+			display: block;
+			width: 11px;
+			height: 3px;
+			background: #555;
+			border-radius: 2px;
+		}
+	}
+}
