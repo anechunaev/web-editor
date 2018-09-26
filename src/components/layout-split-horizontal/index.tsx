@@ -1,3 +1,7 @@
+/**
+ * @deprecated refactor layout-split-vertical instead
+ */
+
 import { Component, Prop, Element, State } from '@stencil/core';
 import Storage from '../Storage/storages/localStorage';
 import { getPath } from '../DOM/path';

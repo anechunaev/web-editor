@@ -11,6 +11,13 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface LayoutScrollable {
+    'axis': "x" | "y" | "xy";
+  }
+  interface LayoutScrollableAttributes extends StencilHTMLAttributes {
+    'axis'?: "x" | "y" | "xy";
+  }
+
   interface LayoutSplitHorizontal {
     'onSizeChange': (size: number, delta: number) => void;
     'resizible': "top" | "bottom";
@@ -42,6 +49,7 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'LayoutScrollable': Components.LayoutScrollable;
     'LayoutSplitHorizontal': Components.LayoutSplitHorizontal;
     'LayoutSplitVertical': Components.LayoutSplitVertical;
     'LayoutSplit': Components.LayoutSplit;
@@ -49,12 +57,19 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'layout-scrollable': Components.LayoutScrollableAttributes;
     'layout-split-horizontal': Components.LayoutSplitHorizontalAttributes;
     'layout-split-vertical': Components.LayoutSplitVerticalAttributes;
     'layout-split': Components.LayoutSplitAttributes;
     'layout-test': Components.LayoutTestAttributes;
   }
 
+
+  interface HTMLLayoutScrollableElement extends Components.LayoutScrollable, HTMLStencilElement {}
+  var HTMLLayoutScrollableElement: {
+    prototype: HTMLLayoutScrollableElement;
+    new (): HTMLLayoutScrollableElement;
+  };
 
   interface HTMLLayoutSplitHorizontalElement extends Components.LayoutSplitHorizontal, HTMLStencilElement {}
   var HTMLLayoutSplitHorizontalElement: {
@@ -81,6 +96,7 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'layout-scrollable': HTMLLayoutScrollableElement
     'layout-split-horizontal': HTMLLayoutSplitHorizontalElement
     'layout-split-vertical': HTMLLayoutSplitVerticalElement
     'layout-split': HTMLLayoutSplitElement
@@ -88,6 +104,7 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'layout-scrollable': HTMLLayoutScrollableElement;
     'layout-split-horizontal': HTMLLayoutSplitHorizontalElement;
     'layout-split-vertical': HTMLLayoutSplitVerticalElement;
     'layout-split': HTMLLayoutSplitElement;
