@@ -28,17 +28,31 @@ export namespace Components {
     'onSizeChange'?: (size: number, delta: number) => void;
     'resizible'?: "left" | "right";
   }
+
+  interface LayoutSplit {
+    'direction': "vertical" | "horizontal";
+  }
+  interface LayoutSplitAttributes extends StencilHTMLAttributes {
+    'direction'?: "vertical" | "horizontal";
+  }
+
+  interface LayoutTest {}
+  interface LayoutTestAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
     'LayoutSplitHorizontal': Components.LayoutSplitHorizontal;
     'LayoutSplitVertical': Components.LayoutSplitVertical;
+    'LayoutSplit': Components.LayoutSplit;
+    'LayoutTest': Components.LayoutTest;
   }
 
   interface StencilIntrinsicElements {
     'layout-split-horizontal': Components.LayoutSplitHorizontalAttributes;
     'layout-split-vertical': Components.LayoutSplitVerticalAttributes;
+    'layout-split': Components.LayoutSplitAttributes;
+    'layout-test': Components.LayoutTestAttributes;
   }
 
 
@@ -54,14 +68,30 @@ declare global {
     new (): HTMLLayoutSplitVerticalElement;
   };
 
+  interface HTMLLayoutSplitElement extends Components.LayoutSplit, HTMLStencilElement {}
+  var HTMLLayoutSplitElement: {
+    prototype: HTMLLayoutSplitElement;
+    new (): HTMLLayoutSplitElement;
+  };
+
+  interface HTMLLayoutTestElement extends Components.LayoutTest, HTMLStencilElement {}
+  var HTMLLayoutTestElement: {
+    prototype: HTMLLayoutTestElement;
+    new (): HTMLLayoutTestElement;
+  };
+
   interface HTMLElementTagNameMap {
     'layout-split-horizontal': HTMLLayoutSplitHorizontalElement
     'layout-split-vertical': HTMLLayoutSplitVerticalElement
+    'layout-split': HTMLLayoutSplitElement
+    'layout-test': HTMLLayoutTestElement
   }
 
   interface ElementTagNameMap {
     'layout-split-horizontal': HTMLLayoutSplitHorizontalElement;
     'layout-split-vertical': HTMLLayoutSplitVerticalElement;
+    'layout-split': HTMLLayoutSplitElement;
+    'layout-test': HTMLLayoutTestElement;
   }
 
 
