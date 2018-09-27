@@ -13,20 +13,26 @@
 	<section class="screen">
 		<eui-layout-split col-width="300">
 			<eui-layout-scrollable>
-				<eui-editor-panel title="Hello">
-					<eui-editor-panel-group>
+				<eui-editor-panel panel-title="Hello">
+					<span>Lorem ipsum dolor sit amet</span>
+				</eui-editor-panel>
+				<eui-editor-panel panel-title="Big awesome form">
+					<eui-editor-panel-group group-title="Do something">
+						<button>Magick button</button>
+					</eui-editor-panel-group>
+					<eui-editor-panel-group group-title="Search">
 						<input />
-						<button>Hello</button>
+						<button>Find</button>
 					</eui-editor-panel-group>
 				</eui-editor-panel>
-				<eui-editor-panel>
-					<eui-editor-panel-group title="Search">
-						<input />
-						<button>Hello</button>
-					</eui-editor-panel-group>
-					<eui-editor-panel-group title="Search">
-						<input />
-						<button>Hello</button>
+				<eui-editor-panel panel-title="Nested groups example">
+					<eui-editor-panel-group group-title="Grid size">
+						<eui-editor-panel-group>
+							<input /><div style="flex-basis:auto">&nbsp;✕&nbsp;</div><input />
+						</eui-editor-panel-group>
+						<eui-editor-panel-group>
+							<button>Update</button>
+						</eui-editor-panel-group>
 					</eui-editor-panel-group>
 				</eui-editor-panel>
 			</eui-layout-scrollable>

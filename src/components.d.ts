@@ -12,17 +12,17 @@ import '@stencil/core';
 export namespace Components {
 
   interface EuiEditorPanelGroup {
-    'title': string;
+    'groupTitle': string;
   }
   interface EuiEditorPanelGroupAttributes extends StencilHTMLAttributes {
-    'title'?: string;
+    'groupTitle'?: string;
   }
 
   interface EuiEditorPanel {
-    'title': string;
+    'panelTitle': string;
   }
   interface EuiEditorPanelAttributes extends StencilHTMLAttributes {
-    'title'?: string;
+    'panelTitle'?: string;
   }
 
   interface EuiLayoutResizable {

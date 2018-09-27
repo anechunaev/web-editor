@@ -6,11 +6,11 @@ import { Component, Prop } from '@stencil/core';
 	styleUrl: 'index.less',
 })
 export class EditorPanel {
-	@Prop() title?: string;
+	@Prop() panelTitle?: string;
 
 	public render() {
 		return [
-			<div class="title">{this.title}</div>,
+			<div class="title">{this.panelTitle}</div>,
 			<eui-layout-resizable minHeight={0} axis="y">
 				<eui-layout-scrollable>
 					<div class="content">
