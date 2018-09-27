@@ -52,10 +52,20 @@ export namespace Components {
   }
 
   interface EuiLayoutSplit {
+    'colHeight': string;
+    'colMaxHeight': string;
+    'colMaxWidth': string;
+    'colMinHeight': string;
+    'colMinWidth': string;
     'colWidth': string;
     'splitDir': "vertical" | "horizontal";
   }
   interface EuiLayoutSplitAttributes extends StencilHTMLAttributes {
+    'colHeight'?: string;
+    'colMaxHeight'?: string;
+    'colMaxWidth'?: string;
+    'colMinHeight'?: string;
+    'colMinWidth'?: string;
     'colWidth'?: string;
     'splitDir'?: "vertical" | "horizontal";
   }
