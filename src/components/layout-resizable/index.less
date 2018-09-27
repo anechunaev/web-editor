@@ -1,0 +1,77 @@
+:host {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+
+	.content {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+	}
+
+	.x {
+		width: ~"calc(100% - 9px)";
+		padding-right: 9px;
+	}
+
+	.y {
+		height: ~"calc(100% - 9px)";
+		padding-bottom: 9px;
+	}
+
+	.resizer {
+		width: 9px;
+		height: 9px;
+		display: flex;
+		position: absolute;
+		justify-content: center;
+		align-items: center;
+
+		&::before {
+			content: '';
+			width: 3px;
+			height: 3px;
+			display: block;
+			background: #555;
+			border-radius: 50%;
+		}
+	}
+
+	.vertical {
+		top: 0;
+		right: 0;
+		height: 100%;
+		cursor: col-resize;
+
+		&::before {
+			box-shadow: 0 -4px 0 0 #555, 0 4px 0 0 #555;
+		}
+	}
+
+	.horizontal {
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		cursor: row-resize;
+
+		&::before {
+			box-shadow: -4px 0 0 0 #555, 4px 0 0 0 #555;
+		}
+	}
+
+	.full {
+		right: 0;
+		bottom: 0;
+		cursor: nwse-resize;
+
+		&::before {
+			border-radius: 0;
+			width: 6px;
+			height: 6px;
+			border: 0;
+			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'%3E%3Cpath stroke='%23606060' stroke-linecap='round' d='M0.5,5.5L5.5,0.5'/%3E%3Cpath stroke='%23606060' stroke-linecap='round' d='M2.5,5.5L5.5,2.5'/%3E%3Cpath stroke='%23606060' stroke-linecap='round' d='M4.5,5.5L5.5,4.5'/%3E%3C/svg%3E");
+		}
+	}
+}

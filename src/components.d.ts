@@ -11,121 +11,101 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface EditorPanel {
+  interface EuiEditorPanel {
     'title': string;
   }
-  interface EditorPanelAttributes extends StencilHTMLAttributes {
+  interface EuiEditorPanelAttributes extends StencilHTMLAttributes {
     'title'?: string;
   }
 
-  interface LayoutScrollable {
+  interface EuiLayoutResizable {
+    'axis': "x" | "y" | "xy";
+    'height': number;
+    'maxHeight': number;
+    'maxWidth': number;
+    'minHeight': number;
+    'minWidth': number;
+    'width': number;
+  }
+  interface EuiLayoutResizableAttributes extends StencilHTMLAttributes {
+    'axis'?: "x" | "y" | "xy";
+    'height'?: number;
+    'maxHeight'?: number;
+    'maxWidth'?: number;
+    'minHeight'?: number;
+    'minWidth'?: number;
+    'width'?: number;
+  }
+
+  interface EuiLayoutScrollable {
     'axis': "x" | "y" | "xy";
   }
-  interface LayoutScrollableAttributes extends StencilHTMLAttributes {
+  interface EuiLayoutScrollableAttributes extends StencilHTMLAttributes {
     'axis'?: "x" | "y" | "xy";
   }
 
-  interface LayoutSplitHorizontal {
-    'onSizeChange': (size: number, delta: number) => void;
-    'resizible': "top" | "bottom";
+  interface EuiLayoutSplit {
+    'colWidth': string;
+    'splitDir': "vertical" | "horizontal";
   }
-  interface LayoutSplitHorizontalAttributes extends StencilHTMLAttributes {
-    'onSizeChange'?: (size: number, delta: number) => void;
-    'resizible'?: "top" | "bottom";
+  interface EuiLayoutSplitAttributes extends StencilHTMLAttributes {
+    'colWidth'?: string;
+    'splitDir'?: "vertical" | "horizontal";
   }
-
-  interface LayoutSplitVertical {
-    'onSizeChange': (size: number, delta: number) => void;
-    'resizible': "left" | "right";
-  }
-  interface LayoutSplitVerticalAttributes extends StencilHTMLAttributes {
-    'onSizeChange'?: (size: number, delta: number) => void;
-    'resizible'?: "left" | "right";
-  }
-
-  interface LayoutSplit {
-    'direction': "vertical" | "horizontal";
-  }
-  interface LayoutSplitAttributes extends StencilHTMLAttributes {
-    'direction'?: "vertical" | "horizontal";
-  }
-
-  interface LayoutTest {}
-  interface LayoutTestAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'EditorPanel': Components.EditorPanel;
-    'LayoutScrollable': Components.LayoutScrollable;
-    'LayoutSplitHorizontal': Components.LayoutSplitHorizontal;
-    'LayoutSplitVertical': Components.LayoutSplitVertical;
-    'LayoutSplit': Components.LayoutSplit;
-    'LayoutTest': Components.LayoutTest;
+    'EuiEditorPanel': Components.EuiEditorPanel;
+    'EuiLayoutResizable': Components.EuiLayoutResizable;
+    'EuiLayoutScrollable': Components.EuiLayoutScrollable;
+    'EuiLayoutSplit': Components.EuiLayoutSplit;
   }
 
   interface StencilIntrinsicElements {
-    'editor-panel': Components.EditorPanelAttributes;
-    'layout-scrollable': Components.LayoutScrollableAttributes;
-    'layout-split-horizontal': Components.LayoutSplitHorizontalAttributes;
-    'layout-split-vertical': Components.LayoutSplitVerticalAttributes;
-    'layout-split': Components.LayoutSplitAttributes;
-    'layout-test': Components.LayoutTestAttributes;
+    'eui-editor-panel': Components.EuiEditorPanelAttributes;
+    'eui-layout-resizable': Components.EuiLayoutResizableAttributes;
+    'eui-layout-scrollable': Components.EuiLayoutScrollableAttributes;
+    'eui-layout-split': Components.EuiLayoutSplitAttributes;
   }
 
 
-  interface HTMLEditorPanelElement extends Components.EditorPanel, HTMLStencilElement {}
-  var HTMLEditorPanelElement: {
-    prototype: HTMLEditorPanelElement;
-    new (): HTMLEditorPanelElement;
+  interface HTMLEuiEditorPanelElement extends Components.EuiEditorPanel, HTMLStencilElement {}
+  var HTMLEuiEditorPanelElement: {
+    prototype: HTMLEuiEditorPanelElement;
+    new (): HTMLEuiEditorPanelElement;
   };
 
-  interface HTMLLayoutScrollableElement extends Components.LayoutScrollable, HTMLStencilElement {}
-  var HTMLLayoutScrollableElement: {
-    prototype: HTMLLayoutScrollableElement;
-    new (): HTMLLayoutScrollableElement;
+  interface HTMLEuiLayoutResizableElement extends Components.EuiLayoutResizable, HTMLStencilElement {}
+  var HTMLEuiLayoutResizableElement: {
+    prototype: HTMLEuiLayoutResizableElement;
+    new (): HTMLEuiLayoutResizableElement;
   };
 
-  interface HTMLLayoutSplitHorizontalElement extends Components.LayoutSplitHorizontal, HTMLStencilElement {}
-  var HTMLLayoutSplitHorizontalElement: {
-    prototype: HTMLLayoutSplitHorizontalElement;
-    new (): HTMLLayoutSplitHorizontalElement;
+  interface HTMLEuiLayoutScrollableElement extends Components.EuiLayoutScrollable, HTMLStencilElement {}
+  var HTMLEuiLayoutScrollableElement: {
+    prototype: HTMLEuiLayoutScrollableElement;
+    new (): HTMLEuiLayoutScrollableElement;
   };
 
-  interface HTMLLayoutSplitVerticalElement extends Components.LayoutSplitVertical, HTMLStencilElement {}
-  var HTMLLayoutSplitVerticalElement: {
-    prototype: HTMLLayoutSplitVerticalElement;
-    new (): HTMLLayoutSplitVerticalElement;
-  };
-
-  interface HTMLLayoutSplitElement extends Components.LayoutSplit, HTMLStencilElement {}
-  var HTMLLayoutSplitElement: {
-    prototype: HTMLLayoutSplitElement;
-    new (): HTMLLayoutSplitElement;
-  };
-
-  interface HTMLLayoutTestElement extends Components.LayoutTest, HTMLStencilElement {}
-  var HTMLLayoutTestElement: {
-    prototype: HTMLLayoutTestElement;
-    new (): HTMLLayoutTestElement;
+  interface HTMLEuiLayoutSplitElement extends Components.EuiLayoutSplit, HTMLStencilElement {}
+  var HTMLEuiLayoutSplitElement: {
+    prototype: HTMLEuiLayoutSplitElement;
+    new (): HTMLEuiLayoutSplitElement;
   };
 
   interface HTMLElementTagNameMap {
-    'editor-panel': HTMLEditorPanelElement
-    'layout-scrollable': HTMLLayoutScrollableElement
-    'layout-split-horizontal': HTMLLayoutSplitHorizontalElement
-    'layout-split-vertical': HTMLLayoutSplitVerticalElement
-    'layout-split': HTMLLayoutSplitElement
-    'layout-test': HTMLLayoutTestElement
+    'eui-editor-panel': HTMLEuiEditorPanelElement
+    'eui-layout-resizable': HTMLEuiLayoutResizableElement
+    'eui-layout-scrollable': HTMLEuiLayoutScrollableElement
+    'eui-layout-split': HTMLEuiLayoutSplitElement
   }
 
   interface ElementTagNameMap {
-    'editor-panel': HTMLEditorPanelElement;
-    'layout-scrollable': HTMLLayoutScrollableElement;
-    'layout-split-horizontal': HTMLLayoutSplitHorizontalElement;
-    'layout-split-vertical': HTMLLayoutSplitVerticalElement;
-    'layout-split': HTMLLayoutSplitElement;
-    'layout-test': HTMLLayoutTestElement;
+    'eui-editor-panel': HTMLEuiEditorPanelElement;
+    'eui-layout-resizable': HTMLEuiLayoutResizableElement;
+    'eui-layout-scrollable': HTMLEuiLayoutScrollableElement;
+    'eui-layout-split': HTMLEuiLayoutSplitElement;
   }
 
 

@@ -11,17 +11,20 @@
 </head>
 <body>
 	<section class="screen">
-		<layout-split>
-			<layout-scrollable>
-					<editor-panel title="Hello">
-						<span>Brave</span>
-					</editor-panel>
-					<editor-panel>
-						<span>New</span>
-					</editor-panel>
-			</layout-scrollable>
+		<eui-layout-split col-width="300">
+			<eui-layout-scrollable>
+				<eui-editor-panel title="Hello">
+					<div>
+						<input />
+						<button>Hello</button>
+					</div>
+				</eui-editor-panel>
+				<eui-editor-panel>
+					<span>New</span>
+				</eui-editor-panel>
+			</eui-layout-scrollable>
 			<span>World</span>
-		</layout-split>
+		</eui-layout-split> 
 	</section>
 </body>
 </html>

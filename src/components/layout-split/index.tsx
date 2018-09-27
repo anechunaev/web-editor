@@ -1,14 +1,22 @@
 import { Component, Element, Prop } from '@stencil/core';
+import { prependOnceListener } from 'cluster';
 
 @Component({
-	tag: 'layout-split',
+	tag: 'eui-layout-split',
 	shadow: true,
 	styleUrl: 'index.less',
 })
 export class LayoutSplit {
 	@Element() private self;
 
-	@Prop() direction: "vertical" | "horizontal" = "vertical";
+	@Prop() splitDir: "vertical" | "horizontal" = "vertical";
+	@Prop() colWidth: string = '';
+
+	private widths: number[] = [];
+
+	public componentWillLoad() {
+		this.widths = this.colWidth.split(',').map(w => +w);
+	}
 
 	private setWrapper = (children: HTMLElement[], index = 0) => {
 		const element = children[0];
@@ -24,17 +32,17 @@ export class LayoutSplit {
 			sibling.setAttribute('slot', `item${index + 1}`);
 		}
 
-		return this.direction === "vertical" ? (
-			<layout-split-vertical slot={index === 0 ? "left" : "right"}>
-				<slot name={`item${index}`} slot="left" />
-				{sibling ? <slot name={`item${index + 1}`} slot="right" /> : this.setWrapper(children.slice(1), index + 1)}
-			</layout-split-vertical>
-		) : (
-			<layout-split-horizontal slot={index === 0 ? "top" : "bottom"}>
-				<slot name={`item${index}`} slot="top" />
-				{sibling ? <slot name={`item${index + 1}`} slot="bottom" /> : this.setWrapper(children.slice(1), index + 1)}
-			</layout-split-horizontal>
-		);
+		return this.splitDir === "vertical" ? [
+			<eui-layout-resizable axis="x" width={this.widths[index]}>
+				<slot name={`item${index}`} />
+			</eui-layout-resizable>,
+			sibling ? <slot name={`item${index + 1}`} /> : this.setWrapper(children.slice(1), index + 1)
+		 ] : [
+			<eui-layout-resizable axis="y" width={this.widths[index]}>
+				<slot name={`item${index}`} />
+			</eui-layout-resizable>,
+			sibling ? <slot name={`item${index + 1}`} /> : this.setWrapper(children.slice(1), index + 1)
+		 ];
 	}
 
 	public render() {

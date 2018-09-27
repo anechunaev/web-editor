@@ -1,7 +1,7 @@
 import { Component, Prop, Element } from '@stencil/core';
 
 @Component({
-	tag: 'layout-scrollable',
+	tag: 'eui-layout-scrollable',
 	shadow: true,
 	styleUrl: 'index.less',
 })
