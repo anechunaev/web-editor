@@ -11,6 +11,13 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface EuiEditorPanelGroup {
+    'title': string;
+  }
+  interface EuiEditorPanelGroupAttributes extends StencilHTMLAttributes {
+    'title'?: string;
+  }
+
   interface EuiEditorPanel {
     'title': string;
   }
@@ -56,6 +63,7 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'EuiEditorPanelGroup': Components.EuiEditorPanelGroup;
     'EuiEditorPanel': Components.EuiEditorPanel;
     'EuiLayoutResizable': Components.EuiLayoutResizable;
     'EuiLayoutScrollable': Components.EuiLayoutScrollable;
@@ -63,12 +71,19 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'eui-editor-panel-group': Components.EuiEditorPanelGroupAttributes;
     'eui-editor-panel': Components.EuiEditorPanelAttributes;
     'eui-layout-resizable': Components.EuiLayoutResizableAttributes;
     'eui-layout-scrollable': Components.EuiLayoutScrollableAttributes;
     'eui-layout-split': Components.EuiLayoutSplitAttributes;
   }
 
+
+  interface HTMLEuiEditorPanelGroupElement extends Components.EuiEditorPanelGroup, HTMLStencilElement {}
+  var HTMLEuiEditorPanelGroupElement: {
+    prototype: HTMLEuiEditorPanelGroupElement;
+    new (): HTMLEuiEditorPanelGroupElement;
+  };
 
   interface HTMLEuiEditorPanelElement extends Components.EuiEditorPanel, HTMLStencilElement {}
   var HTMLEuiEditorPanelElement: {
@@ -95,6 +110,7 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'eui-editor-panel-group': HTMLEuiEditorPanelGroupElement
     'eui-editor-panel': HTMLEuiEditorPanelElement
     'eui-layout-resizable': HTMLEuiLayoutResizableElement
     'eui-layout-scrollable': HTMLEuiLayoutScrollableElement
@@ -102,6 +118,7 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'eui-editor-panel-group': HTMLEuiEditorPanelGroupElement;
     'eui-editor-panel': HTMLEuiEditorPanelElement;
     'eui-layout-resizable': HTMLEuiLayoutResizableElement;
     'eui-layout-scrollable': HTMLEuiLayoutScrollableElement;
