@@ -11,7 +11,7 @@ export class EditorPanel {
 	public render() {
 		return [
 			<div class="title">{this.title}</div>,
-			<eui-layout-resizable minHeight={0}>
+			<eui-layout-resizable minHeight={0} axis="y">
 				<eui-layout-scrollable>
 					<div class="content">
 						<slot />
