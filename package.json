@@ -11,9 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@stencil/core": "^0.12.4",
+    "@stencil/core": "^0.16.1",
     "@stencil/less": "^0.1.0",
-    "typescript": "^3.0.3",
+    "typescript": "^3.2.2",
     "xxhashjs": "^0.2.2"
-  }
+  },
+  "devDependencies": {}
 }

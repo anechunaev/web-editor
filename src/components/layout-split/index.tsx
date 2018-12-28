@@ -1,5 +1,4 @@
 import { Component, Element, Prop } from '@stencil/core';
-import { prependOnceListener } from 'cluster';
 
 @Component({
 	tag: 'eui-layout-split',
